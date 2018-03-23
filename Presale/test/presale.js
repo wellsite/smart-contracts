@@ -63,4 +63,22 @@ contract('Presale', async (accounts) => {
 		assert.equal(newBalance, 0);
 	})
 
+	it('should withdraw to the owner if needed', async() => {
+		var amount = 15e+17;
+
+		let purchase = await instance.sendTransaction({ value: amount, from: accounts[1] });
+		let contractBalance = web3.eth.getBalance(instance.address);
+		let ownerBalance = web3.eth.getBalance(accounts[0]);
+
+		assert.equal(contractBalance, amount);
+
+		let withdraw = await instance.withdraw();
+		let contractBalance2 = web3.eth.getBalance(instance.address);
+		let ownerBalance2 = web3.eth.getBalance(accounts[0]);
+		
+		assert.equal(contractBalance2, 0);
+		assert.notEqual(ownerBalance2, ownerBalance);
+
+	})
+
 })

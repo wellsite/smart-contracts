@@ -166,6 +166,13 @@ contract Presale is Ownable {
 	}
 
 	/**
+	* Function to withdraw funds to owner
+	*/
+	function withdraw() external onlyOwner {
+		owner.transfer(this.balance);
+	}
+
+	/**
 	* Override function
 	*/
 	function() payable {
