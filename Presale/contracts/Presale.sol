@@ -26,7 +26,7 @@ contract Presale is Ownable {
 	* Maximum presale amount allotted
 	* Set to 17000 ETH (in wei)
 	*/
-	uint public presaleMaximum = 17000 * (10 ** 18);
+	uint public presaleMaximum = 42600 * (10 ** 18);
 
 	/**
 	* Minimum purchase amount
