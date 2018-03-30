@@ -81,4 +81,18 @@ contract('Presale', async (accounts) => {
 
 	})
 
+	it('should update cap', async() => {
+		var newCap = 15000;
+
+		let cap1 = await instance.presaleMaximum.call();
+		console.log(cap1.toString());
+
+		let updateCap = await instance.updateCap(newCap);
+
+		let cap2 = await instance.presaleMaximum.call();
+		console.log(cap2.toString());
+
+		assert.notEqual(cap1, cap2);
+	})
+
 })

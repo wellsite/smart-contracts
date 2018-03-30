@@ -24,9 +24,9 @@ contract Presale is Ownable {
 
 	/**
 	* Maximum presale amount allotted
-	* Set to 17000 ETH (in wei)
+	* in wei
 	*/
-	uint public presaleMaximum = 42600 * (10 ** 18);
+	uint public presaleMaximum = 35850 * (10 ** 18);
 
 	/**
 	* Minimum purchase amount
@@ -170,6 +170,13 @@ contract Presale is Ownable {
 	*/
 	function withdraw() external onlyOwner {
 		owner.transfer(this.balance);
+	}
+
+	/**
+	* Function to update
+	*/
+	function updateCap(uint newCap) external onlyOwner {
+		presaleMaximum = newCap * (10 ** 18);
 	}
 
 	/**
